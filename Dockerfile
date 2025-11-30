@@ -3,9 +3,10 @@ FROM node:24-alpine AS builder
 
 WORKDIR /app
 
-# OpenAPI仕様ファイルをダウンロード
-RUN apk add --no-cache curl && \
-    curl -Lo openapi.yaml https://app.stainless.com/api/spec/documented/openai/openapi.documented.yml
+# OpenAPI仕様ファイルをダウンロードし、セキュリティ定義を削除
+RUN apk add --no-cache curl yq && \
+    curl -Lo openapi.yaml https://app.stainless.com/api/spec/documented/openai/openapi.documented.yml && \
+    yq -i 'del(.security) | del(.components.securitySchemes)' openapi.yaml
 
 # Prism CLIをインストール
 RUN npm install @stoplight/prism-cli
