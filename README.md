@@ -1,5 +1,8 @@
 # openai-mokku
 
+> [!WARNING]
+> **このプロジェクトはアーカイブされています。** Stoplight Prism は Server-Sent Events (SSE) に対応していないため、OpenAI API のストリーミングレスポンスを正しくモックできません。そのため、このモックサーバーは実用的に動作しません。
+
 OpenAI API のモックサーバーを提供する Docker イメージです。[Stoplight Prism](https://stoplight.io/open-source/prism) を使用して、公式の OpenAPI 仕様からモックレスポンスを生成します。
 
 ## 使い方
